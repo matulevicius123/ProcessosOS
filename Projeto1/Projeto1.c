@@ -38,16 +38,20 @@ void *transferencia(void *arguments) {
   if ((*conta1).saldo >= valorTransferencia) {
     (*conta1).saldo -= valorTransferencia;
     (*conta2).saldo += valorTransferencia;
-  }
-
-  if (inverter == true) {
-    printf("Transferência de 'to' para 'from' completa!\nSaldo da conta from: %d\nSaldo da conta to: %d\n", from.saldo, to.saldo);
+    if (inverter == true) {
+      printf("Transferência de 'to' para 'from' completa!\nSaldo da conta from: %d\nSaldo da conta to: %d\n", from.saldo, to.saldo);
+    } else {
+      printf("Transferência de 'from' para 'to' completa!\nSaldo da conta from: %d\nSaldo da conta to: %d\n", from.saldo, to.saldo);
+    }
   } else {
-    printf("Transferência de 'from' para 'to' completa!\nSaldo da conta from: %d\nSaldo da conta to: %d\n", from.saldo, to.saldo);
+    if (inverter == true) {
+        printf("Transferência incompleta! Valor da transferencia maior do que da conta sorteada.\nSaldo da conta 'to': %d\nValor da transferencia: %d\n", to.saldo, valorTransferencia);
+      } else {
+        printf("Transferência incompleta! Valor da transferencia maior do que da conta sorteada.\nSaldo da conta 'from': %d\nValor da transferencia: %d\n", from.saldo, valorTransferencia);
+    }
   }
-
-    pthread_mutex_unlock(&mutex);
-    return (void *)0;
+  pthread_mutex_unlock(&mutex);
+  return (void *)0;
 }
 
 int main() {
@@ -63,6 +67,11 @@ int main() {
   printf("Insira o valor do saldo da conta 2.\n");
   scanf("%d", &to.saldo);
 
+  if (valorTransferencia > from.saldo && valorTransferencia > to.saldo) {
+    printf("Valor de transferencia maior do que ambas as contas. Transações são impossíveis. Finalizando o programa...");
+    exit(0);
+  }
+  
   printf("Transferindo %d...\n", valorTransferencia);
   for (i = 0; i < LIMITE_THREADS; i++) {
     if (pthread_create(&vetorThreads[i], NULL, transferencia, NULL) != 0) {
@@ -78,7 +87,7 @@ int main() {
   }
 
   for (i = 0; i < LIMITE_THREADS; i++) {
-    if (semSaldo == true) {
+    if (semSaldo == false) {
       pthread_join(vetorThreads[i], NULL);
     }
   }
@@ -87,3 +96,4 @@ int main() {
   pthread_mutex_destroy(&mutex);
   return 0;
 }
+
