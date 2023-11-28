@@ -31,7 +31,7 @@ Iterações são feitas até que a condição se quebre, retornando o momento de
 ## Compilação:
 
 
-![alt](/Projeto1/assets/compilacao.png)
+![alt](/Projeto2/assets/compilacao.png)
 
 
 Basta compilar o arquivo-fonte utilizando o GCC. É simplesmente utilizar o comando `gcc projeto2.c` ou opcionalmente `gcc projeto2.c -o "projeto2.bin"` para dar ao arquivo um nome 
@@ -47,6 +47,6 @@ um arquivo entrada.txt, com o formato detalhado no enunciado do projeto. (Exempl
 ## Resultados
 
 
-![alt](/Projeto1/assets/result.png)
+![alt](/Projeto2/assets/result.png)
 
 
