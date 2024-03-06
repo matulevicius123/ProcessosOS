@@ -1,4 +1,4 @@
-# Projeto 1
+![image](https://github.com/matulevicius123/Trabalhos-SO/assets/142500460/a1b15b61-9835-4c94-92aa-40ce2b1451b5)# Projeto 1
 
 ## Sobre o repositório
 O programa a seguir foi criado utilizando a linguagem de programação C para realização do Projeto 1 da disciplina Sistemas Operacionais. 
@@ -30,5 +30,6 @@ foi finalizado devido ao esvaziamento de uma das contas, ou se foi devido ao fim
 ![alt](/Projeto1/assets/exec.png)
 
 ### Integrantes do grupo.
-- Igor Benites Moura - 32275528
-- João Pedro Maia Matulevicius Garcia - 32241429
+
+- Igor Benites Moura - 10403462
+- João Pedro Maia Matulevicius Garcia - 10402158
